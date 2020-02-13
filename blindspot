@@ -1,0 +1,15 @@
+import sys
+
+from blindSpot import BlindSpot
+
+def help():
+    print('Usage: python %s -m <original image> -t <tiles directory>\r' % (sys.argv[0]))
+
+if __name__ == "__main__":
+    try:
+        mainImage = sys.argv[sys.argv.index('-m') + 1]
+        tilesPath = sys.argv[sys.argv.index('-t') + 1]
+        mosaic = BlindSpot(mainImage, tilesPath)
+        mosaic.mosaicByNumTiles().save("mosaic.jpg")
+    except ValueError:
+        help()
